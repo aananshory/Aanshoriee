@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Persegi Panjang</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #edf3ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 70px 40px 40px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #28599d;
+            font-size: 36px;
+            margin-bottom: 35px;
+        }
+
+        label {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        input {
+            width: 100%;
+            padding: 20px;
+            font-size: 24px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #285da8;
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            background-color: #285da8;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4c91;
+        }
+
+        .hasil {
+            background-color: #edf8ff;
+            margin-top: 35px;
+            padding: 25px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .hasil h2 {
+            font-size: 24px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .hasil p {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #222;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            label, input, button, .hasil p {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Kalkulator Persegi Panjang</h1>
+
+        <label for="panjang">Panjang</label>
+        <input type="number" id="panjang" value="12">
+
+        <label for="lebar">Lebar</label>
+        <input type="number" id="lebar" value="55">
+
+        <button onclick="hitung()">Hitung</button>
+
+        <div class="hasil" id="hasil">
+            <h2>Hasil Perhitungan</h2>
+
+            <p id="hasilPanjang">Panjang: 12</p>
+            <p id="hasilLebar">Lebar: 55</p>
+            <p id="hasilLuas">Luas: 660</p>
+            <p id="hasilKeliling">Keliling: 134</p>
+        </div>
+
+    </div>
+
+    <script>
+        function hitung() {
+
+            let panjang = parseFloat(
+                document.getElementById("panjang").value
+            );
+
+            let lebar = parseFloat(
+                document.getElementById("lebar").value
+            );
+
+            if (
+                isNaN(panjang) ||
+                isNaN(lebar) ||
+                panjang <= 0 ||
+                lebar <= 0
+            ) {
+                alert("Masukkan panjang dan lebar yang valid!");
+                return;
+            }
+
+            // Menghitung luas
+            let luas = panjang * lebar;
+
+            // Menghitung keliling
+            let keliling = 2 * (panjang + lebar);
+
+            // Menampilkan hasil
+            document.getElementById("hasilPanjang").innerHTML =
+                "Panjang: " + panjang;
+
+            document.getElementById("hasilLebar").innerHTML =
+                "Lebar: " + lebar;
+
+            document.getElementById("hasilLuas").innerHTML =
+                "Luas: " + luas;
+
+            document.getElementById("hasilKeliling").innerHTML =
+                "Keliling: " + keliling;
+
+            document.getElementById("hasil").style.display = "block";
+        }
+
+        // Menampilkan hasil awal
+        hitung();
+    </script>
+
+</body>
+  </html>
+  
